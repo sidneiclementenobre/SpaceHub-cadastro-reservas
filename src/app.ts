@@ -1,8 +1,8 @@
 import express from 'express';
 import path from 'path';
-import spaceRoutes from './Routes/spaceRoutes';
-import authRoutes from './Routes/authRoutes';
-import bookingRoutes from './Routes/bookingRoutes';
+import spaceRoutes from './routes/spaceroutes';
+import authRoutes from './routes/authRoutes';
+import bookingRoutes from './routes/bookingRoutes';
 
 const app = express();
 
