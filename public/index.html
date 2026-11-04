@@ -353,30 +353,38 @@
             const email = document.getElementById('loginEmail').value;
             const password = document.getElementById('loginPassword').value;
 
+
             try {
-                const res = await fetch('/api/auth/login', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        email,
-                        password
-                    })
-                });
+                // Altere para a URL real do seu projeto Supabase
+                const res = await fetch(
+                    'https://spacehub-cadastro-reservas-public.vercel.app/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+
+                        },
+                        body: JSON.stringify({
+                            email,
+                            password
+                        })
+                    });
+
                 const data = await res.json();
 
                 if (res.ok) {
-                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('token', data.access_token);
                     alert('Login efetuado com sucesso!');
                     location.reload();
                 } else {
-                    alert(data.error || 'E-mail ou senha inválidos.');
+                    // Captura mensagens de erro retornadas pelo próprio Supabase
+                    alert(data.error_description || 'E-mail ou senha inválidos.');
                 }
-            } catch (err) {
-                alert('Erro na comunicação com o servidor.');
+            } catch (error) {
+                console.error('Erro na requisição:', error);
+                alert('Ocorreu um erro ao tentar se comunicar com o seu servidor.');
             }
-        }
+        } // Esta chave fecha a função de login antes de começar a handleRegister
+
 
         async function handleRegister(e) {
             e.preventDefault();
@@ -425,7 +433,8 @@
 
             if (!check_in || !check_out) {
                 alert(
-                    'Selecione as datas de check-in e check-out no topo da página antes de clicar no imóvel para reservar!');
+                    'Selecione as datas de check-in e check-out no topo da página antes de clicar no imóvel para reservar!'
+                );
                 return;
             }
 
