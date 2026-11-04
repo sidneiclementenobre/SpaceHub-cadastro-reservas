@@ -320,7 +320,7 @@
 
         async function loadSpaces() {
             try {
-                const response = await fetch('/api/imoveis');
+                const response = await fetch('https://spacehub-cadastro-reservas-public.vercel.app/');
                 const spaces = await response.json();
                 const grid = document.getElementById('spacesGrid');
                 grid.innerHTML = '';
@@ -394,7 +394,7 @@
             const role = document.getElementById('regRole').value;
 
             try {
-                const res = await fetch('/api/auth/register', {
+                const res = await fetch('https://spacehub-cadastro-reservas-public.vercel.app/', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
