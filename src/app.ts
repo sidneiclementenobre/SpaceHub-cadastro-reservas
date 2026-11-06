@@ -1,6 +1,6 @@
 import express from 'express';
 import path from 'path';
-import spaceRoutes from './routes/spaceroutes';
+import spaceRoutes from './routes/spaceRoutes';
 import authRoutes from './routes/authRoutes';
 import bookingRoutes from './routes/bookingRoutes';
 
