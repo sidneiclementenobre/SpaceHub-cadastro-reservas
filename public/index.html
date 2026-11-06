@@ -279,7 +279,7 @@
             </form>
         </div>
     </div>
-        <div class="modal" id="registerModal">
+    <div class="modal" id="registerModal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('registerModal')">&times;</span>
             <h3 style="margin-bottom: 20px;">Criar Conta</h3>
@@ -312,16 +312,16 @@
         // CONFIGURAÇÃO DE URL: 
         // Em testes locais, mantenha 'http://localhost:3000/api'. 
         // Quando seu backend estiver online na Render, substitua pelo link de lá.
-        const BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-            ? 'http://localhost:3000/api'
-            : 'https://SUA_URL_DA_://onrender.com';
+        const BASE_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') ?
+            'http://localhost:3000/api' :
+            'https://spacehub-api-backend.onrender.com';
 
-        function openModal(id) { 
-            document.getElementById(id).style.display = 'flex'; 
+        function openModal(id) {
+            document.getElementById(id).style.display = 'flex';
         }
-        
-        function closeModal(id) { 
-            document.getElementById(id).style.display = 'none'; 
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
         }
 
         async function loadSpaces() {
@@ -332,7 +332,8 @@
                 grid.innerHTML = '';
 
                 if (spaces.length === 0) {
-                    grid.innerHTML = '<p style="color: var(--gray); grid-column: 1/-1; text-align: center;">Nenhum imóvel disponível no banco.</p>';
+                    grid.innerHTML =
+                        '<p style="color: var(--gray); grid-column: 1/-1; text-align: center;">Nenhum imóvel disponível no banco.</p>';
                     return;
                 }
 
@@ -361,8 +362,13 @@
             try {
                 const res = await fetch(`${BASE_URL}/auth/login`, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email, password })
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email,
+                        password
+                    })
                 });
                 const data = await res.json();
 
@@ -388,8 +394,15 @@
             try {
                 const res = await fetch(`${BASE_URL}/auth/register`, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name, email, password, role })
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name,
+                        email,
+                        password,
+                        role
+                    })
                 });
                 const data = await res.json();
 
@@ -417,18 +430,24 @@
             const check_out = document.getElementById('searchCheckOut').value;
 
             if (!check_in || !check_out) {
-                alert('Selecione as datas de check-in e check-out no topo da página antes de clicar no imóvel para reservar!');
+                alert(
+                    'Selecione as datas de check-in e check-out no topo da página antes de clicar no imóvel para reservar!'
+                );
                 return;
             }
 
             try {
                 const res = await fetch(`${BASE_URL}/reservas`, {
                     method: 'POST',
-                    headers: { 
+                    headers: {
                         'Content-Type': 'application/json',
                         'Authorization': 'Bearer ' + token
                     },
-                    body: JSON.stringify({ space_id: spaceId, check_in, check_out })
+                    body: JSON.stringify({
+                        space_id: spaceId,
+                        check_in,
+                        check_out
+                    })
                 });
                 const data = await res.json();
 
@@ -444,7 +463,8 @@
 
         const token = localStorage.getItem('token');
         if (token) {
-            document.getElementById('authButtons').innerHTML = '<button onclick="localStorage.clear(); location.reload();" style="background: none; border: 1px solid var(--gray); padding: 8px 16px; border-radius: 21px; font-weight: 600; cursor: pointer;">Sair</button>';
+            document.getElementById('authButtons').innerHTML =
+                '<button onclick="localStorage.clear(); location.reload();" style="background: none; border: 1px solid var(--gray); padding: 8px 16px; border-radius: 21px; font-weight: 600; cursor: pointer;">Sair</button>';
         }
         loadSpaces();
     </script>
