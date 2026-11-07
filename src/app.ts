@@ -19,4 +19,5 @@ app.use('/api', bookingRoutes);
 const PORT = process.env.PORT || 3000;
 app.listen(Number(PORT),'0.0.0.0', () => {
   console.log(`🚀 SpaceHub Server rodando perfeitamente na porta ${PORT}`);
-});//
+});
+
