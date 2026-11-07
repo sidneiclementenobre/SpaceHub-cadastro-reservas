@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import path from 'path';
 import spaceRoutes from './routes/spaceRoutes';
 import authRoutes from './routes/authRoutes';
@@ -6,6 +7,7 @@ import bookingRoutes from './routes/bookingRoutes';
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
 // Marco 4: Serve a interface HTML (Frontend) automaticamente para o navegador
