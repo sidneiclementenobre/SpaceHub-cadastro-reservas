@@ -1,7 +1,7 @@
 import { Response } from 'express';
 import { AuthRequest } from '../middlewares/authMiddleware';
 import { BookingModel } from '../models/bookingModel';
-//
+
 
 
 export class BookingController {
