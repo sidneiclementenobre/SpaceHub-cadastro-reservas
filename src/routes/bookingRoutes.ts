@@ -1,9 +1,9 @@
 import { Router } from 'express';
 import { BookingController } from '../controllers/bookingController';
-import { authMiddleware } from '../middlewares/authMiddleware';
+import { authMiddleware } from '../middlewares/AuthMiddleware';
 
 
-//
+
 const router = Router();
 
 // Ambas as rotas exigem obrigatoriamente que o usuário esteja logado
