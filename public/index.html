@@ -313,8 +313,8 @@
         // Em testes locais, mantenha 'http://localhost:3000/api'. 
         // Quando seu backend estiver online na Render, substitua pelo link de lá.
         const BASE_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') ?
-            'http://localhost:3000/api' :
-            'https://spacehub-cadastro-reservas-production.up.railway.app/';
+            'http://localhost:3000' :
+            'https://spacehub-cadastro-reservas-production.up.railway.app';
 
         function openModal(id) {
             document.getElementById(id).style.display = 'flex';
@@ -336,7 +336,7 @@
                         '<p style="color: var(--gray); grid-column: 1/-1; text-align: center;">Nenhum imóvel disponível no banco.</p>';
                     return;
                 }
-//
+                //
                 spaces.forEach(space => {
                     grid.innerHTML += `
                         <div class="card" onclick="makeBooking(${space.id})">
