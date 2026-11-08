@@ -312,9 +312,7 @@
         // CONFIGURAÇÃO DE URL: 
         // Em testes locais, mantenha 'http://localhost:3000/api'. 
         // Quando seu backend estiver online na Render, substitua pelo link de lá.
-        const BASE_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') ?
-            'http://localhost:3000' :
-            'https://spacehub-cadastro-reservas-production.up.railway.app';
+        const BASE_URL = 'https://spacehub-cadastro-reservas-production.up.railway.app';
 
         function openModal(id) {
             document.getElementById(id).style.display = 'flex';
