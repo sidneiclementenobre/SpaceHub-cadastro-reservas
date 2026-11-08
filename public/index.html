@@ -340,7 +340,7 @@
                 spaces.forEach(space => {
                     grid.innerHTML += `
                         <div class = "card" onclick = "makeBooking(${space.id})">
-                        <img src = "${space.image_url || 'https://unsplash.com'} alt = "Imóvel">
+                        <img src = "${space.image_url || 'https://unsplash.com'}" alt = "Imóvel">
                         <div class = "card-content">
                         <div class = "card-title" >${space.title}</div> 
                         <p style = "color: var(--gray); font-size: 14px; margin-bottom: 10px;">${space.description}</p> 
@@ -348,7 +348,7 @@
                     `;
                 });
             } catch (error) {
-                console.error('Erro ao buscar imóveis:', error); 
+                console.error('Erro ao buscar imóveis:', error);
             }
         }
 
