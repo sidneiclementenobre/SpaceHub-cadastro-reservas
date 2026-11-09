@@ -10,9 +10,10 @@ export interface Space {
 
 export class SpaceModel {
   static async create(space: Space): Promise<Space> {
+    // Corrigido: Agora são 4 colunas para 4 valores ($1, $2, $3, $4)
     const query = `
       INSERT INTO spaces (title, description, price_per_night, image_url)
-      VALUES ($1, $2, $3, $4, $5) RETURNING *;
+      VALUES ($1, $2, $3, $4) RETURNING *;
     `;
     const values = [space.title, space.description, space.price_per_night, space.image_url];
     const { rows } = await pool.query(query, values);
